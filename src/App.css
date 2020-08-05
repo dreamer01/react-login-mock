@@ -9,17 +9,6 @@ body {
   height: 100vh;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  padding: 0px 40px;
-  box-shadow: 2px 2px 4px #c5c3c3;
-}
-
-.logo-header {
-  height: 20px;
-}
-
 .logo-login {
   height: 30px;
 }

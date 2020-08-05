@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Header component 1`] = `
+<DocumentFragment>
+  <header
+    class="header"
+  >
+    <img
+      alt="Healthify Logo"
+      class="logo-header"
+      src="logo.png"
+    />
+    <p
+      class="title"
+      data-testid="header-title"
+    >
+      Title
+    </p>
+  </header>
+</DocumentFragment>
+`;
+
+exports[`renders login page 1`] = `
+<DocumentFragment>
+  <header
+    class="header"
+  >
+    <img
+      alt="Healthify Logo"
+      class="logo-header"
+      src="logo.png"
+    />
+    <p
+      class="title"
+      data-testid="header-title"
+    >
+      Title
+    </p>
+  </header>
+</DocumentFragment>
+`;

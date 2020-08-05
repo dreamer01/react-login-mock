@@ -1,6 +1,7 @@
 import React from "react";
 
 import validate from "./utils/validate";
+import Header from "./components/Header";
 import logoSrc from "./logo.png";
 import "./App.css";
 
@@ -48,10 +49,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <header className="header">
-        <img className="logo-header" src={logoSrc} alt="Healthify Logo" />
-        <p className="title">Accounts</p>
-      </header>
+      <Header title="Accounts" />
       <div className="container">
         <div className="login-view">
           <img className="logo-login" src={logoSrc} alt="Healthify Logo" />
