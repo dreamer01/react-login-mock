@@ -1,7 +1,8 @@
 const validate = ({ type, value }) => {
+  let regex = /./;
   switch (type) {
     case "email":
-      let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
       if (!regex.test(value)) return "Please enter a valid email.";
       else return "";
     case "password":

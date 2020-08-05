@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import logoSrc from "../../logo.png";
+import logoSrc from "../../assets/logo.png";
 import "./header.css";
 
 function Header({ title = "" }) {

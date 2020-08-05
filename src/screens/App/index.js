@@ -1,9 +1,9 @@
 import React from "react";
 
-import validate from "./utils/validate";
-import Layout from "./components/Layout";
-import logoSrc from "./logo.png";
-import "./App.css";
+import validate from "../../utils/validate";
+import Layout from "../../components/Layout";
+import logoSrc from "../../assets/logo.png";
+import "./app.css";
 
 function App() {
   const [email, setEmail] = React.useState("");
@@ -43,13 +43,16 @@ function App() {
           console.log(data);
           // Navigate To Home Page
         })
-        .catch(console.error);
+        .catch((error) => {
+          setLoading(false);
+          console.error(error);
+        });
     }
   };
 
   return (
     <Layout title="Accounts">
-      <div className="login-view">
+      <form className="login-view">
         <img className="logo-login" src={logoSrc} alt="Healthify Logo" />
         <h3>Sign In</h3>
         <p>Use your HealthifyMe Account</p>
@@ -59,6 +62,7 @@ function App() {
             className={`input ${emailError && "input-error"}`}
             type="email"
             name="email"
+            autoComplete="username"
             value={email}
             placeholder="Enter Your Email"
             onChange={handleEmail}
@@ -71,6 +75,7 @@ function App() {
             className={`input ${passwordError && "input-error"}`}
             type="password"
             name="password"
+            autoComplete="current-password"
             value={password}
             placeholder="Enter Your Password"
             onChange={handlePassword}
@@ -94,7 +99,7 @@ function App() {
             <div className="spinner-circle spinner" />
           </div>
         )}
-      </div>
+      </form>
     </Layout>
   );
 }
