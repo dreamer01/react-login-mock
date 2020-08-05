@@ -6,9 +6,24 @@ import "./App.css";
 function App() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
   const handleLogin = () => {
-    console.log({ email, password });
+    setLoading(true);
+    fetch("http://www.mocky.io/v2/5d9d9219310000153650e30b", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoading(false);
+        console.log(data);
+        // Navigate Home Page
+      })
+      .catch(console.error);
   };
 
   return (
@@ -40,12 +55,20 @@ function App() {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <input
-              className="input btn"
-              onClick={handleLogin}
-              type="button"
-              value="Login"
-            />
+            {!loading ? (
+              <input
+                // className={`input btn ${loading && "loading"}`}
+                // disabled={loading}
+                className="input btn"
+                onClick={handleLogin}
+                type="button"
+                value="Login"
+              />
+            ) : (
+              <div className="spinner-view">
+                <div className="spinner-circle spinner" />
+              </div>
+            )}
           </form>
         </div>
       </div>
