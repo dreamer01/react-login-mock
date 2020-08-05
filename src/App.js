@@ -1,5 +1,6 @@
 import React from "react";
 
+import validate from "./utils/validate";
 import logoSrc from "./logo.png";
 import "./App.css";
 
@@ -11,21 +12,15 @@ function App() {
   const [loading, setLoading] = React.useState(false);
 
   const handleEmail = (e) => {
-    setEmail(e.target.value);
-    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!regex.test(e.target.value))
-      setEmailError("Please enter a valid email.");
-    else setEmailError("");
+    const { name, value } = e.target;
+    setEmail(value);
+    setEmailError(validate({ type: name, value }));
   };
 
   const handlePassword = (e) => {
-    setPassword(e.target.value);
-    const regex = /^(?=.*[A-Z])[A-Za-z\d$@$!%*?&]{6,}/;
-    if (!regex.test(e.target.value))
-      setPasswordError(
-        "Password should be 6 char long and have 1 uppercase char."
-      );
-    else setPasswordError(false);
+    const { name, value } = e.target;
+    setPassword(value);
+    setPasswordError(validate({ type: name, value }));
   };
 
   const handleLogin = () => {
