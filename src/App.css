@@ -2,13 +2,6 @@ body {
   color: #404040;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100vh;
-}
-
 .logo-login {
   height: 30px;
 }
@@ -17,12 +10,6 @@ body {
   border-left: 1px solid #c5c3c3;
   margin-left: 12px;
   padding-left: 12px;
-}
-
-.container {
-  display: flex;
-  flex: 1;
-  align-items: center;
 }
 
 .login-view {

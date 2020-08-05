@@ -1,7 +1,7 @@
 import React from "react";
 
 import validate from "./utils/validate";
-import Header from "./components/Header";
+import Layout from "./components/Layout";
 import logoSrc from "./logo.png";
 import "./App.css";
 
@@ -48,57 +48,54 @@ function App() {
   };
 
   return (
-    <div className="wrapper">
-      <Header title="Accounts" />
-      <div className="container">
-        <div className="login-view">
-          <img className="logo-login" src={logoSrc} alt="Healthify Logo" />
-          <h3>Sign In</h3>
-          <p>Use your HealthifyMe Account</p>
+    <Layout title="Accounts">
+      <div className="login-view">
+        <img className="logo-login" src={logoSrc} alt="Healthify Logo" />
+        <h3>Sign In</h3>
+        <p>Use your HealthifyMe Account</p>
 
-          <div className="input-view">
-            <input
-              className={`input ${emailError && "input-error"}`}
-              type="email"
-              name="email"
-              value={email}
-              placeholder="Enter Your Email"
-              onChange={handleEmail}
-            />
-            {emailError && <p className="error">{emailError}</p>}
-          </div>
-
-          <div className="input-view">
-            <input
-              className={`input ${passwordError && "input-error"}`}
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Enter Your Password"
-              onChange={handlePassword}
-            />
-            {passwordError && <p className="error">{passwordError}</p>}
-          </div>
-
-          {!loading ? (
-            <div className="input-view">
-              <input
-                // className={`input btn ${loading && "loading"}`}
-                // disabled={loading}
-                className="input btn"
-                onClick={handleLogin}
-                type="button"
-                value="Login"
-              />
-            </div>
-          ) : (
-            <div className="spinner-view">
-              <div className="spinner-circle spinner" />
-            </div>
-          )}
+        <div className="input-view">
+          <input
+            className={`input ${emailError && "input-error"}`}
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Enter Your Email"
+            onChange={handleEmail}
+          />
+          {emailError && <p className="error">{emailError}</p>}
         </div>
+
+        <div className="input-view">
+          <input
+            className={`input ${passwordError && "input-error"}`}
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Enter Your Password"
+            onChange={handlePassword}
+          />
+          {passwordError && <p className="error">{passwordError}</p>}
+        </div>
+
+        {!loading ? (
+          <div className="input-view">
+            <input
+              // className={`input btn ${loading && "loading"}`}
+              // disabled={loading}
+              className="input btn"
+              onClick={handleLogin}
+              type="button"
+              value="Login"
+            />
+          </div>
+        ) : (
+          <div className="spinner-view">
+            <div className="spinner-circle spinner" />
+          </div>
+        )}
       </div>
-    </div>
+    </Layout>
   );
 }
 
