@@ -47,38 +47,6 @@ body {
   margin: 0px;
 }
 
-.btn {
-  width: 100%;
-  cursor: pointer;
-  background-size: 2rem 2rem;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-}
-
-.loading {
-  background-color: #c5c3c3;
-  background-image: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.1) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.1) 75%,
-    transparent 75%,
-    transparent
-  );
-  color: #ffffff;
-  animation: 2.8s linear 0s infinite normal none running loading;
-}
-
-@keyframes loading {
-  0% {
-    background-position: 0px 0px;
-  }
-  100% {
-    background-position: 2rem 4rem;
-  }
-}
-
 .spinner-view {
   display: inline-flex;
   width: 250px;

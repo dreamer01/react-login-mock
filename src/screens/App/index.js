@@ -2,6 +2,7 @@ import React from "react";
 
 import validate from "../../utils/validate";
 import Layout from "../../components/Layout";
+import Button from "../../components/Button";
 import logoSrc from "../../assets/logo.png";
 import "./app.css";
 
@@ -24,7 +25,8 @@ function App() {
     setPasswordError(validate({ type: name, value }));
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     if (emailError || passwordError) return;
     if (!email) setEmailError("Email is required.");
     if (!password) setPasswordError("Password is required.");
@@ -52,7 +54,7 @@ function App() {
 
   return (
     <Layout title="Accounts">
-      <form className="login-view">
+      <form className="login-view" onSubmit={handleLogin}>
         <img className="logo-login" src={logoSrc} alt="Healthify Logo" />
         <h3>Sign In</h3>
         <p>Use your HealthifyMe Account</p>
@@ -83,22 +85,7 @@ function App() {
           {passwordError && <p className="error">{passwordError}</p>}
         </div>
 
-        {!loading ? (
-          <div className="input-view">
-            <input
-              // className={`input btn ${loading && "loading"}`}
-              // disabled={loading}
-              className="input btn"
-              onClick={handleLogin}
-              type="button"
-              value="Login"
-            />
-          </div>
-        ) : (
-          <div className="spinner-view">
-            <div className="spinner-circle spinner" />
-          </div>
-        )}
+        <Button loading={loading} title="Login" onClick={handleLogin} />
       </form>
     </Layout>
   );
