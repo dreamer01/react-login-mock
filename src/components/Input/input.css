@@ -1,0 +1,23 @@
+.input-view {
+  width: 100%;
+}
+
+.input {
+  padding: 10px;
+  width: 90%;
+  padding-left: 15px;
+  border: 1px solid #c5c3c3;
+  margin-top: 20px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.input-error {
+  border: 1px solid tomato;
+}
+
+.error {
+  color: tomato;
+  font-size: 14px;
+  margin: 0px;
+}
