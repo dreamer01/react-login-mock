@@ -1,8 +1,11 @@
 ## The project is bootstrapped with CRA.
 
+Create React App is official starter pack from React team.
+
 ## Project Structure
 
-```src
+```
+src
     |-- assets
     |-- components
     |-- screens
