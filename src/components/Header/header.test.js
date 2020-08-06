@@ -2,7 +2,7 @@ import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import Header from "./index";
 
-test("renders Header component", () => {
+test("renders header component", () => {
   const { asFragment, getByAltText, getByText, getByTestId } = render(
     <Header title="Title" />
   );
@@ -11,5 +11,3 @@ test("renders Header component", () => {
   expect(getByText("Title")).toBeInTheDocument();
   // expect(getByTestId("header-title")).toBeInTheDocument();
 });
-
-afterEach(cleanup);

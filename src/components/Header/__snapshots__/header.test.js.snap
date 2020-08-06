@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Header component 1`] = `
+exports[`renders header component 1`] = `
 <DocumentFragment>
   <header
     class="header"

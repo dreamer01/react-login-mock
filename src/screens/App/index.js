@@ -3,6 +3,7 @@ import React from "react";
 import validate from "../../utils/validate";
 import Layout from "../../components/Layout";
 import Button from "../../components/Button";
+import Input from "../../components/Input";
 import logoSrc from "../../assets/logo.png";
 import "./app.css";
 
@@ -14,15 +15,15 @@ function App() {
   const [loading, setLoading] = React.useState(false);
 
   const handleEmail = (e) => {
-    const { name, value } = e.target;
+    const { type, value } = e.target;
     setEmail(value);
-    setEmailError(validate({ type: name, value }));
+    setEmailError(validate({ type, value }));
   };
 
   const handlePassword = (e) => {
-    const { name, value } = e.target;
+    const { type, value } = e.target;
     setPassword(value);
-    setPasswordError(validate({ type: name, value }));
+    setPasswordError(validate({ type, value }));
   };
 
   const handleLogin = (e) => {
@@ -59,31 +60,25 @@ function App() {
         <h3>Sign In</h3>
         <p>Use your HealthifyMe Account</p>
 
-        <div className="input-view">
-          <input
-            className={`input ${emailError && "input-error"}`}
-            type="email"
-            name="email"
-            autoComplete="username"
-            value={email}
-            placeholder="Enter Your Email"
-            onChange={handleEmail}
-          />
-          {emailError && <p className="error">{emailError}</p>}
-        </div>
+        <Input
+          type="email"
+          name="email"
+          autoComplete="username"
+          value={email}
+          placeholder="Enter Your Email"
+          onChange={handleEmail}
+          error={emailError}
+        />
 
-        <div className="input-view">
-          <input
-            className={`input ${passwordError && "input-error"}`}
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            value={password}
-            placeholder="Enter Your Password"
-            onChange={handlePassword}
-          />
-          {passwordError && <p className="error">{passwordError}</p>}
-        </div>
+        <Input
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          value={password}
+          placeholder="Enter Your Password"
+          onChange={handlePassword}
+          error={passwordError}
+        />
 
         <Button loading={loading} title="Login" onClick={handleLogin} />
       </form>
