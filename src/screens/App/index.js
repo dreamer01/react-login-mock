@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import validate from "../../utils/validate";
 import Layout from "../../components/Layout";
@@ -8,11 +8,12 @@ import logoSrc from "../../assets/logo.png";
 import "./app.css";
 
 function App() {
-  const [email, setEmail] = React.useState("");
-  const [emailError, setEmailError] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [passwordError, setPasswordError] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
 
   const handleEmail = (e) => {
     const { type, value } = e.target;
@@ -44,7 +45,7 @@ function App() {
         .then((data) => {
           setLoading(false);
           console.log(data);
-          // Navigate To Home Page
+          setSuccess("User Logged In."); // Navigate To Home Page
         })
         .catch((error) => {
           setLoading(false);
@@ -59,7 +60,7 @@ function App() {
         <img className="logo-login" src={logoSrc} alt="Healthify Logo" />
         <h3>Sign In</h3>
         <p>Use your HealthifyMe Account</p>
-
+        {success && <p className="success">{success}</p>}
         <Input
           type="email"
           name="email"
@@ -68,6 +69,7 @@ function App() {
           placeholder="Enter Your Email"
           onChange={handleEmail}
           error={emailError}
+          data-testid="email"
         />
 
         <Input
@@ -78,6 +80,7 @@ function App() {
           placeholder="Enter Your Password"
           onChange={handlePassword}
           error={passwordError}
+          data-testid="password"
         />
 
         <Button loading={loading} title="Login" onClick={handleLogin} />

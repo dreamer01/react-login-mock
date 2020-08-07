@@ -23,6 +23,10 @@ body {
   width: 300px;
 }
 
+.success {
+  color: #25bd57;
+}
+
 /*
 .spinner-view {
   display: inline-flex;
