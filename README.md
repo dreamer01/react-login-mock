@@ -24,4 +24,8 @@ Unit test cases are written using
 
 Adding Github action to introduce CI and CD pipeline.
 
-- Action to run test and avoid merge if test fails.
+- [x] Action to run Unit tests and avoid merge if test fails. ![Unit Test Run](https://github.com/dreamer01/react-login-mock/workflows/Unit%20Test%20Run/badge.svg)
+
+- [ ] Action to run E2E Test coverage using Cypress.
+
+- [ ] Action to build and deploy after all test run.
