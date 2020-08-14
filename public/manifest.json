@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Dev World",
+  "name": "Dev World, react app with test cases and Github actions.",
   "icons": [
     {
       "src": "favicon.ico",
