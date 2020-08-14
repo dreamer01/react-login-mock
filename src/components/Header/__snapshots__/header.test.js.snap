@@ -6,9 +6,9 @@ exports[`renders header component 1`] = `
     class="header"
   >
     <img
-      alt="Healthify Logo"
+      alt="Dev World Logo"
       class="logo-header"
-      src="logo.png"
+      src="logo.svg"
     />
     <p
       class="title"
