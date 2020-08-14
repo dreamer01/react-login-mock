@@ -19,3 +19,9 @@ Unit test cases are written using
 
 - React Testing Library
 - Jest
+
+## Action
+
+Adding Github action to introduce CI and CD pipeline.
+
+- Action to run test and avoid merge if test fails.
