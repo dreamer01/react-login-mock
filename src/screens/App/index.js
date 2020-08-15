@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import validate from "../../utils/validate";
 import Layout from "../../components/Layout";
@@ -27,32 +27,35 @@ function App() {
     setPasswordError(validate({ type, value }));
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    if (emailError || passwordError) return;
-    if (!email) setEmailError("Email is required.");
-    if (!password) setPasswordError("Password is required.");
-    else {
-      setLoading(true);
-      fetch("http://www.mocky.io/v2/5d9d9219310000153650e30b", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setLoading(false);
-          console.log(data);
-          setSuccess("User Logged In."); // Navigate To Home Page
+  const handleLogin = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (emailError || passwordError) return;
+      if (!email) setEmailError("Email is required.");
+      if (!password) setPasswordError("Password is required.");
+      else {
+        setLoading(true);
+        fetch("http://www.mocky.io/v2/5d9d9219310000153650e30b", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
         })
-        .catch((error) => {
-          setLoading(false);
-          console.error(error);
-        });
-    }
-  };
+          .then((res) => res.json())
+          .then((data) => {
+            setLoading(false);
+            console.log(data);
+            setSuccess("User Logged In."); // Navigate To Home Page
+          })
+          .catch((error) => {
+            setLoading(false);
+            console.error(error);
+          });
+      }
+    },
+    [email, emailError, password, passwordError]
+  );
 
   return (
     <Layout title="Login">
