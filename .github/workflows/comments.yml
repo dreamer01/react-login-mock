@@ -1,0 +1,16 @@
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  comment-emoji:
+    runs-on: ubuntu-latest
+    name: Emoji Comments
+    steps:
+      - uses: actions/checkout@v2
+      - name: Comment Emoji - action exe
+        uses: dreamer01/comments-emoji@master
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
