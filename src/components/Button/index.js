@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./button.css";
 
-function Button({ title = "", onClick = () => {}, loading = false }) {
+function Button({ title, onClick, loading }) {
   return (
     <button
       className={`btn ${loading ? "loading" : ""}`}
@@ -19,6 +19,12 @@ Button.propTypes = {
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   loading: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  title: "",
+  onClick: () => {},
+  loading: false,
 };
 
 export default Button;

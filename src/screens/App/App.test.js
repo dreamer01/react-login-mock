@@ -14,7 +14,32 @@ test("renders login page", () => {
   expect(inputElements[1]).toBeInTheDocument();
 });
 
-test("on submit, login request happens", async () => {
+test("on submit, with no input data login request is not called", async () => {
+  const { getByRole, getByTestId } = render(<App />);
+  userEvent.click(getByRole("button"));
+
+  const emailInput = getByTestId("email");
+  const passwordInput = getByTestId("password");
+
+  expect(emailInput).toHaveClass("input-error");
+  expect(passwordInput).toHaveClass("input-error");
+});
+
+test("on submit, with invalid input data login request is not called", async () => {
+  const userData = { email: "test#mail.com", password: "password" };
+  const { getByTestId } = render(<App />);
+
+  const emailInput = getByTestId("email");
+  const passwordInput = getByTestId("password");
+
+  userEvent.type(emailInput, userData.email);
+  userEvent.type(passwordInput, userData.password);
+
+  expect(emailInput).toHaveClass("input-error");
+  expect(passwordInput).toHaveClass("input-error");
+});
+
+test("on submit, with valid input data login request happens", async () => {
   const userData = { email: "test@mail.com", password: "asdASD" };
   const { getByRole, getByText, getByTestId } = render(<App />);
 

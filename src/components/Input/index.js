@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import "./input.css";
 
-function Input({ onChange = () => {}, error = "", ...props }) {
+function Input({ onChange, error, ...props }) {
   return (
     <div className="input-view">
       <input
@@ -23,6 +23,11 @@ function Input({ onChange = () => {}, error = "", ...props }) {
 Input.propTypes = {
   onChange: PropTypes.func,
   error: PropTypes.string,
+};
+
+Input.defaultProps = {
+  onChange: () => {},
+  error: "",
 };
 
 export default Input;

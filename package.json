@@ -9,16 +9,23 @@
     "msw": "^0.20.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:coverage": "yarn test --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/components/**/*.js",
+      "src/screens/**/*.js"
+    ]
   },
   "browserslist": {
     "production": [
