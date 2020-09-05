@@ -1,11 +1,27 @@
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 50px;
   padding: 0px 40px;
   box-shadow: 2px 2px 4px #c5c3c3;
 }
 
+.logo-view {
+  display: flex;
+  align-items: center;
+}
+
 .logo-header {
   height: 20px;
+}
+
+.link {
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 3px 6px;
+}
+
+.link:hover {
+  background-color: gainsboro;
 }
