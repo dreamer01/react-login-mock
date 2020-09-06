@@ -5,17 +5,41 @@ exports[`renders header component 1`] = `
   <header
     class="header"
   >
-    <img
-      alt="Dev World Logo"
-      class="logo-header"
-      src="logo.svg"
-    />
-    <p
-      class="title"
-      data-testid="header-title"
+    <div
+      class="logo-view"
     >
-      Title
-    </p>
+      <a
+        href="/"
+      >
+        <img
+          alt="Dev World Logo"
+          class="logo-header"
+          src="logo.svg"
+        />
+      </a>
+      <p
+        class="title"
+        data-testid="header-title"
+      >
+        Title
+      </p>
+    </div>
+    <menu>
+      <a
+        class="link"
+        data-testid="nav-about"
+        href="/about"
+      >
+        About
+      </a>
+      <a
+        class="link"
+        data-testid="nav-login"
+        href="/login"
+      >
+        Login
+      </a>
+    </menu>
   </header>
 </DocumentFragment>
 `;

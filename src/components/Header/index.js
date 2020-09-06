@@ -31,20 +31,25 @@ function Header({ title }) {
         </p>
       </div>
       <menu>
-        <Link className="link" to="/about">
+        <Link data-testid="nav-about" className="link" to="/about">
           About
         </Link>
         {isLogged ? (
           <>
-            <Link className="link" to="/profile">
+            <Link data-testid="nav-profile" className="link" to="/profile">
               Profile
             </Link>
-            <Link className="link" to="/login" onClick={handleLogout}>
+            <Link
+              data-testid="nav-logout"
+              className="link"
+              to="/login"
+              onClick={handleLogout}
+            >
               Logout
             </Link>
           </>
         ) : (
-          <Link className="link" to="/login">
+          <Link data-testid="nav-login" className="link" to="/login">
             Login
           </Link>
         )}

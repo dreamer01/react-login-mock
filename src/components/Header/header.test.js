@@ -1,5 +1,6 @@
 import React from "react";
-import { render } from "@testing-library/react";
+
+import { render } from "../../utils/testing";
 import Header from "./index";
 
 test("renders header component", () => {
@@ -9,5 +10,5 @@ test("renders header component", () => {
   expect(asFragment()).toMatchSnapshot();
   expect(getByAltText(/logo/i)).toBeInTheDocument();
   expect(getByText("Title")).toBeInTheDocument();
-  // expect(getByTestId("header-title")).toBeInTheDocument();
+  expect(getByTestId("header-title")).toBeInTheDocument();
 });
