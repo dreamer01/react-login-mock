@@ -1,11 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import Layout from "../../components/Layout";
-import "./home.css";
-import Loader from "../../components/Loader";
 
-function Home(props) {
+function Home() {
   return (
     <Layout title="Home">
       <div className="container-page">
@@ -29,7 +26,5 @@ function Home(props) {
     </Layout>
   );
 }
-
-Home.propTypes = {};
 
 export default Home;

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import Layout from "../../components/Layout";
 import Loader from "../../components/Loader";
-import "./profile.css";
 
 function Profile() {
   const [loading, setLoading] = useState(true);
@@ -12,15 +11,10 @@ function Profile() {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users?id=1")
       .then((res) => res.json())
-      .then((data) => {
-        setLoading(false);
-        setData(data[0]);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setError(error);
-      });
-  });
+      .then((data) => setData(data[0]))
+      .catch((error) => setError(error));
+    setLoading(false);
+  }, []);
 
   return (
     <Layout title="Profile">

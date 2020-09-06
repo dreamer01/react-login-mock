@@ -1,9 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import Layout from "../../components/Layout";
 
 function NotFound(props) {
-  return <Layout title="404">Not Found</Layout>;
+  return (
+    <Layout title="404">
+      <h1>Not Found</h1>
+    </Layout>
+  );
 }
 
 NotFound.propTypes = {};

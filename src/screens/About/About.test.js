@@ -1,8 +1,9 @@
 import React from "react";
-import { render } from "@testing-library/react";
 
+import { render } from "../../utils/testing";
 import About from "./index";
 
-test("render About Page", () => {
-  render(<About />);
+test("renders About Page", () => {
+  const { getByText } = render(<About />, { route: "/about" });
+  expect(getByText(/Project Structure/i)).toBeInTheDocument();
 });

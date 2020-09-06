@@ -9,7 +9,7 @@ import Input from "../../components/Input";
 import logoSrc from "../../assets/logo.svg";
 import "./login.css";
 
-function App() {
+function Login() {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
@@ -113,7 +113,7 @@ function App() {
 
         <Button
           loading={fetching}
-          title={loading ? "Logging" : "Login"}
+          title={fetching ? "Logging..." : "Login"}
           onClick={handleLogin}
         />
       </form>
@@ -121,4 +121,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;

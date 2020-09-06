@@ -1,11 +1,15 @@
 import React from "react";
 import userEvent from "@testing-library/user-event";
-import { render, waitForElement } from "@testing-library/react";
+import { waitForElement, act } from "@testing-library/react";
 
-import App from "./index";
+import { render } from "../../utils/testing";
+
+import Login from "./index";
 
 test("renders login page", () => {
-  const { getByText, getAllByPlaceholderText } = render(<App />);
+  const { getByText, getAllByPlaceholderText } = render(<Login />, {
+    route: "/login",
+  });
   expect(getByText(/Sign in/i)).toBeInTheDocument();
 
   // Two Input box should be present
@@ -15,7 +19,7 @@ test("renders login page", () => {
 });
 
 test("on submit, with no input data login request is not called", async () => {
-  const { getByRole, getByTestId } = render(<App />);
+  const { getByRole, getByTestId } = render(<Login />, { route: "/login" });
   userEvent.click(getByRole("button"));
 
   const emailInput = getByTestId("email");
@@ -27,7 +31,7 @@ test("on submit, with no input data login request is not called", async () => {
 
 test("on submit, with invalid input data login request is not called", async () => {
   const userData = { email: "test#mail.com", password: "password" };
-  const { getByTestId } = render(<App />);
+  const { getByTestId } = render(<Login />, { route: "/login" });
 
   const emailInput = getByTestId("email");
   const passwordInput = getByTestId("password");
@@ -41,7 +45,9 @@ test("on submit, with invalid input data login request is not called", async () 
 
 test("on submit, with valid input data login request happens", async () => {
   const userData = { email: "test@mail.com", password: "asdASD" };
-  const { getByRole, getByText, getByTestId } = render(<App />);
+  const { getByRole, getByText, getByTestId } = render(<Login />, {
+    route: "/login",
+  });
 
   const emailInput = getByTestId("email");
   const passwordInput = getByTestId("password");
@@ -50,6 +56,7 @@ test("on submit, with valid input data login request happens", async () => {
   userEvent.type(passwordInput, userData.password);
 
   userEvent.click(getByRole("button"));
-
-  await waitForElement(() => getByText(/User Logged In/i));
+  await act(async () => {
+    await waitForElement(() => getByText(/Logging/i));
+  });
 });
