@@ -72,7 +72,8 @@ function Login() {
           });
       }
     },
-    [email, emailError, password, passwordError]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   if (loading)
@@ -92,7 +93,6 @@ function Login() {
         <Input
           type="email"
           name="email"
-          autoComplete="username"
           value={email}
           placeholder="Enter Your Email"
           onChange={handleEmail}
@@ -103,7 +103,6 @@ function Login() {
         <Input
           type="password"
           name="password"
-          autoComplete="current-password"
           value={password}
           placeholder="Enter Your Password"
           onChange={handlePassword}

@@ -35,10 +35,17 @@ exports[`renders layout component 1`] = `
         </a>
         <a
           class="link"
-          data-testid="nav-login"
+          data-testid="nav-profile"
+          href="/profile"
+        >
+          Profile
+        </a>
+        <a
+          class="link"
+          data-testid="nav-logout"
           href="/login"
         >
-          Login
+          Logout
         </a>
       </menu>
     </header>
