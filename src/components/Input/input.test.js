@@ -1,20 +1,24 @@
 import React from "react";
-import { render, cleanup } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import user from "@testing-library/user-event";
 
 import Input from "./index";
 
+const onChange = jest.fn();
+
 test("render input component", () => {
   const { asFragment, getByRole, getByTestId, rerender } = render(
-    <Input onChange={() => {}} />
+    <Input onChange={onChange} />
   );
   expect(asFragment()).toMatchSnapshot();
   expect(getByRole("textbox")).toBeInTheDocument();
 
-  rerender(<Input error="Invalid" onChange={() => {}} />);
+  rerender(<Input error="Invalid" onChange={onChange} />);
   expect(getByRole("textbox")).toHaveClass("input-error");
   expect(getByTestId("error-message")).toBeInTheDocument();
 });
 
-// test("on change event by input", () => {
-//   const { getByRole } = render(<Input onChange={() => {}} />);
-// });
+test("render with default props", () => {
+  const { getByRole } = render(<Input />);
+  user.type(getByRole("textbox"), "abc");
+});
