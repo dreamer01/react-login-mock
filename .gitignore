@@ -24,3 +24,7 @@ yarn-error.log*
 
 # test coverage
 .coverage
+
+# cypress
+cypress/videos
+cypress/screenshots

@@ -72,8 +72,7 @@ function Login() {
           });
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [email, emailError, password, passwordError]
   );
 
   if (loading)
