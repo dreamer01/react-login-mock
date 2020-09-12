@@ -40,40 +40,37 @@ function Login() {
     setPasswordError(validate({ type, value }));
   };
 
-  const handleLogin = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (emailError || passwordError) return;
-      if (!email) setEmailError("Email is required.");
-      if (!password) setPasswordError("Password is required.");
-      // After validation make login Request
-      else {
-        setFetching(true);
-        fetch("http://www.mocky.io/v2/5d9d9219310000153650e30b", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (emailError || passwordError) return;
+    if (!email) setEmailError("Email is required.");
+    if (!password) setPasswordError("Password is required.");
+    // After validation make login Request
+    else {
+      setFetching(true);
+      fetch("http://www.mocky.io/v2/5d9d9219310000153650e30b", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setFetching(false);
+          window.localStorage.setItem(
+            "@test:auth",
+            JSON.stringify({ isLogged: true })
+          );
+          setIsLogged(true);
         })
-          .then((res) => res.json())
-          .then((data) => {
-            setFetching(false);
-            window.localStorage.setItem(
-              "@test:auth",
-              JSON.stringify({ isLogged: true })
-            );
-            setIsLogged(true);
-          })
-          .catch((error) => {
-            setFetching(false);
-            setShowError(true);
-            console.error(error);
-          });
-      }
-    },
-    [email, emailError, password, passwordError]
-  );
+        .catch((error) => {
+          setFetching(false);
+          setShowError(true);
+          console.error(error);
+        });
+    }
+  };
 
   if (loading)
     return (

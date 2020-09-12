@@ -56,6 +56,9 @@ test("on submit, with valid input data login request happens", async () => {
     user.type(passwordInput, userData.password);
   });
 
-  act(() => user.click(getByRole("button")));
-  // await waitForElement(() => getByText(/Logging/i));
+  // REVIEW:
+  await act(() => {
+    user.click(getByRole("button"));
+    waitForElement(() => getByText(/Logging/i));
+  });
 });

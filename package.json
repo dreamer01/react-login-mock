@@ -19,6 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "yarn test --watchAll=false --coverage",
+    "cy:open": "cypress open",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cy:open",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,7 +45,9 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^7.0.0",
     "cypress": "^5.1.0",
-    "eslint-plugin-cypress": "^2.11.1"
+    "eslint-plugin-cypress": "^2.11.1",
+    "start-server-and-test": "^1.11.3"
   }
 }
