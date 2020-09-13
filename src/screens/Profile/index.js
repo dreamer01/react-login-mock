@@ -11,9 +11,14 @@ function Profile() {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users?id=1")
       .then((res) => res.json())
-      .then((data) => setData(data[0]))
-      .catch((error) => setError(error));
-    setLoading(false);
+      .then((data) => {
+        setData(data[0]);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
   }, []);
 
   return (
