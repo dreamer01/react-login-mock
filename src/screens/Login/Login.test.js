@@ -1,6 +1,6 @@
 import React from "react";
 import user from "@testing-library/user-event";
-import { waitForElement, act } from "@testing-library/react";
+import { waitFor, act } from "@testing-library/react";
 
 import { render } from "../../utils/testing";
 import Login from "./index";
@@ -59,6 +59,6 @@ test("on submit, with valid input data login request happens", async () => {
   // REVIEW:
   await act(() => {
     user.click(getByRole("button"));
-    waitForElement(() => getByText(/Logging/i));
+    waitFor(() => getByText(/Logging/i));
   });
 });
