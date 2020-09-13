@@ -1,7 +1,7 @@
 const user = require("../fixtures/user.json");
 const profile = require("../fixtures/profile.json");
 
-describe("visit homepage", () => {
+describe("test navigation", () => {
   it("visit login page and sign in to navigate to home page", () => {
     cy.login(user);
     cy.visit("/");
@@ -11,7 +11,7 @@ describe("visit homepage", () => {
     cy.findByTestId(/nav-profile/i).click();
     cy.findByRole("heading", { name: profile.name });
     cy.findByRole("img").click();
-    cy.findByRole("heading", { name: /testing/i });
+    cy.assertHome();
     cy.findByTestId(/nav-logout/i).click();
     cy.findByRole("heading", { name: /sign in/i });
   });

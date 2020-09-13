@@ -13,3 +13,8 @@ Cypress.Commands.add("login", (user) => {
       return body.user;
     });
 });
+
+Cypress.Commands.add("assertHome", () => {
+  cy.url().should("eq", `${Cypress.config().baseUrl}/`);
+  cy.findByRole("heading", { name: /testing/i });
+});

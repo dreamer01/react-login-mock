@@ -1,6 +1,6 @@
 const user = require("../fixtures/user.json");
 
-describe("visit website", () => {
+describe("login into website", () => {
   it("visit login page and sign in to navigate to home page", () => {
     cy.server()
       .route({
@@ -14,7 +14,7 @@ describe("visit website", () => {
     cy.findByRole("button").click();
     cy.findByText(/logging/i);
     cy.wait("@loginRequest");
-    cy.findByRole("heading", { name: /testing/i });
+    cy.assertHome();
   });
 
   it("visit login page and sign in and show error when request fails", () => {
