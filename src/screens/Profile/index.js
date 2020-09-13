@@ -10,7 +10,10 @@ function Profile() {
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users?id=1")
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status >= 200 && res.status <= 300) return res.json();
+        else throw new Error("Request Failed ", res.status);
+      })
       .then((data) => {
         setData(data[0]);
         setLoading(false);
