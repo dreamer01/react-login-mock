@@ -26,3 +26,5 @@ jobs:
         with:
           browser: chrome
           headless: true
+          start: npm start
+          wait-on: http://localhost:3000
